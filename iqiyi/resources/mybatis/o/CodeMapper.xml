@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CodeMapper">
+	
+	<!--表名 -->
+	<sql id="tableName">
+		O_CODE
+	</sql>
+	
+	<!-- 字段 -->
+	<sql id="Field">
+		ORDER_ID,	
+		CODE,	
+		CITY,	
+		USED,	
+		ID
+	</sql>
+	
+	<!-- 字段值 -->
+	<sql id="FieldValue">
+		#{ORDER_ID},	
+		#{CODE},	
+		#{CITY},	
+		#{USED},	
+		#{ID}
+	</sql>
+	
+	<!-- 新增-->
+	<insert id="save" parameterType="pd">
+		insert into 
+	<include refid="tableName"></include>
+		(
+			ORDER_ID,	
+			CODE,	
+			CITY,	
+			USED	
+		) values (
+			#{ORDER_ID},	
+			#{CODE},	
+			#{CITY},	
+			#{USED}
+		)
+	</insert>
+	 <select id="getCountByCity" resultType="int"  parameterType="pd">
+        select count(*) from o_code where city=#{CITY} and used=0
+    </select>
+      <select id="getByCity" parameterType="pd"  resultType="pd">
+        select * from o_code where city=#{CITY} and used=0 order by id asc limit 1 for update
+	</select>
+	 <select id="findByOrderId"  parameterType="pd"  resultType="pd">
+        select * from o_code where order_id=#{ID}
+    </select>
+	<!-- 删除-->
+	<delete id="delete" parameterType="pd">
+		delete from
+		<include refid="tableName"></include>
+		where 
+			CODE_ID = #{CODE_ID}
+	</delete>
+	
+	<!-- 修改 -->
+	<update id="edit" parameterType="pd">
+		update
+		<include refid="tableName"></include>
+		set 
+			ORDER_ID = #{ORDER_ID},
+			CODE = #{CODE},
+			CITY = #{CITY},
+			USED = #{USED},
+		ID = ID
+		where 
+		ID = #{ID}
+	</update>
+	
+	<!-- 通过ID获取数据 -->
+	<select id="findById" parameterType="pd" resultType="pd">
+		select 
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include>
+		where 
+			ID = #{ID}
+	</select>
+	
+	<!-- 列表 -->
+	<select id="datalistPage" parameterType="page" resultType="pd">
+		select
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include>
+		where 1=1 
+		<if test="pd.keywords!= null and pd.keywords != ''"><!-- 关键词检索 -->
+			and
+				(
+					ORDER_ID  LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+					OR
+					CODE  LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+				<!--	根据需求自己加检索条件
+					字段1 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+					 or 
+					字段2 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') 
+				-->
+				)
+		</if>
+		<if test="pd.USED!=null and pd.USED!=''">
+			and USED = #{pd.USED}
+		</if>
+		<if test="pd.CITY!=null and pd.CITY!=''">
+			and CITY=#{pd.CITY}
+		</if>
+	</select>
+	
+	<!-- 列表(全部) -->
+	<select id="listAll" parameterType="pd" resultType="pd">
+		select
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include>
+	</select>
+	
+	<!-- 批量删除 -->
+	<delete id="deleteAll" parameterType="String">
+		delete from
+		<include refid="tableName"></include>
+		where 
+			ID in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+                 #{item}
+		</foreach>
+	</delete>
+</mapper>

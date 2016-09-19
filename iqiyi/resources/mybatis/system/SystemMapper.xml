@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SystemMapper">
+			
+	<select id="showTables" resultType="pd">
+		show tables;
+	</select>
+	<select id="showCloumns" resultType="pd" parameterType="pd">
+		select column_name from information_schema.columns where table_schema='cmdb' and table_name=#{tables};
+	</select>
+</mapper>

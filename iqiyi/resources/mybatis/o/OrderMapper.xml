@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="OrderMapper">
+	
+	<!--表名 -->
+	<sql id="tableName">
+		O_ORDER
+	</sql>
+	
+	<!-- 字段 -->
+	<sql id="Field">
+		USER_ID,	
+		PAID,	
+		AMOUNT,	
+		COUNT,	
+		CITY,	
+		PHONE,	
+		PAY_CODE,	
+		MSG_CODE,	
+		CHANEL,	
+		ORDER_DATE,
+		pay_method,
+		ID
+	</sql>
+	
+	<!-- 字段值 -->
+	<sql id="FieldValue">
+		#{USER_ID},	
+		#{PAID},	
+		#{AMOUNT},	
+		#{COUNT},	
+		#{CITY},	
+		#{PHONE},	
+		#{PAY_CODE},	
+		#{MSG_CODE},	
+		#{CHANEL},	
+		#{ORDER_DATE},
+		#{pay_method},	
+		#{ID}
+	</sql>
+	
+	<!-- 新增-->
+	<insert id="save" parameterType="pd" useGeneratedKeys="true" keyProperty="id"  keyColumn="id">
+		insert into 
+	<include refid="tableName"></include>
+		(
+			USER_ID,	
+			PAID,	
+			AMOUNT,	
+			COUNT,	
+			CITY,	
+			PHONE,	
+			PAY_CODE,	
+			MSG_CODE,	
+			CHANEL,	
+			ORDER_DATE,
+			pay_method
+		) values (
+			#{USER_ID},	
+			#{PAID},	
+			#{AMOUNT},	
+			#{COUNT},	
+			#{CITY},	
+			#{PHONE},	
+			#{PAY_CODE},	
+			#{MSG_CODE},	
+			#{CHANEL},	
+			#{ORDER_DATE},
+			#{pay_method}
+		)
+		<selectKey resultType="Integer"  keyProperty="id" order="AFTER">
+            select last_insert_id() as id from o_order limit 1
+        </selectKey>
+	</insert>
+	<select id="getId" resultType="int">
+          select last_insert_id() as id from o_order limit 1
+    </select>
+    <select id="findByUser" parameterType="pd"  resultType="pd">
+          select o.id,o.pay_method,o.user_id,o.paid,o.amount,o.count,o.phone,o.pay_code,o.msg_code,o.order_date,c.code,o.city as city from o_order o left join o_code c on o.id=c.order_id where user_id=#{ID} order by o.order_date desc
+    </select>
+	<!-- 删除-->
+	<delete id="delete" parameterType="pd">
+		delete from
+		<include refid="tableName"></include>
+		where 
+			ID = #{ID}
+	</delete>
+	<!-- 修改 -->
+	<update id="edit" parameterType="pd">
+		update
+		<include refid="tableName"></include>
+		set 
+			USER_ID = #{USER_ID},
+			PAID = #{PAID},
+			AMOUNT = #{AMOUNT},
+			COUNT = #{COUNT},
+			CITY = #{CITY},
+			PHONE = #{PHONE},
+			PAY_CODE = #{PAY_CODE},
+			MSG_CODE = #{MSG_CODE},
+			CHANEL = #{CHANEL},
+		ID = ID
+		where 
+		ID = #{ID}
+	</update>
+	
+	<!-- 通过ID获取数据 -->
+	<select id="findById" parameterType="pd" resultType="pd">
+		select 
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include>
+		where 
+			ID = #{ID}
+	</select>
+	
+	<!-- 列表 -->
+	<select id="datalistPage" parameterType="page" resultType="pd">
+		select
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include>
+		where 1=1 
+		<if test="pd.keywords!= null and pd.keywords != ''"><!-- 关键词检索 -->
+			and
+				(
+				USER_ID LIKE  CONCAT(CONCAT('%', #{pd.keywords}),'%')
+				OR 
+				PHONE LIKE  CONCAT(CONCAT('%', #{pd.keywords}),'%')
+				<!--	根据需求自己加检索条件
+					字段1 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%')
+					 or 
+					字段2 LIKE CONCAT(CONCAT('%', #{pd.keywords}),'%') 
+				-->
+				)
+		</if>
+		<if test="pd.PAID!=null and pd.PAID!=''">
+			and PAID = #{pd.PAID}
+		</if>
+		<if test="pd.CITY!=null and pd.CITY!=''">
+			and CITY=#{pd.CITY}
+		</if>
+		ORDER BY ORDER_DATE  DESC
+	</select>
+	
+	<!-- 列表(全部) -->
+	<select id="listAll" parameterType="pd" resultType="pd">
+		select
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include>
+	</select>
+	
+	<!-- 批量删除 -->
+	<delete id="deleteAll" parameterType="String">
+		delete from
+		<include refid="tableName"></include>
+		where 
+			ID in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+                 #{item}
+		</foreach>
+	</delete>
+</mapper>

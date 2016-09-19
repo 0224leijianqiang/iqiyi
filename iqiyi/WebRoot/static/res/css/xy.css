@@ -1,0 +1,490 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, object, code, legend, button, input, textarea, label, th, td, a, img {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+}
+
+body {
+    font: 14px/1.5 Microsoft YaHei;
+    color: #333;
+}
+
+/*清除内外边距*/
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    font-size: 100%;
+}
+
+/*设置默认字体*/
+:focus {
+    outline: 0;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+/*重置列表*/
+fieldset, img {
+    border: 0 none;
+}
+
+img {
+    vertical-align: top;
+}
+
+/*重置图片元素*/
+address, caption, cite, code, dfn, em, i, th, var, optgroup {
+    font-style: normal;
+    font-weight: normal;
+}
+
+abbr, acronym {
+    border: 0;
+    font-variant: normal;
+}
+
+input, button, textarea, select, optgroup, option {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+}
+
+code, kbd, samp, tt {
+    font-size: 100%;
+}
+
+/*@purpose To enable resizing for IE */
+/*@branch For IE6-Win, IE7-Win */
+input, button, textarea, select {
+    *font-size: 100%;
+    outline: none;
+}
+
+/*
+form label {
+    cursor: pointer;
+}
+*/
+
+textarea {
+    resize: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/*重置表格*/
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+
+}
+html,body{height:100%;box-sizing: border-box;margin:0 auto}
+
+/*login*/
+.ln-bd {
+    padding: 0.3rem;
+}
+.ln-bd input {
+    height: inherit;
+    border:1px solid #DFDFDF;
+    border-radius: 5px;
+    padding:0 0.3rem;
+    box-sizing:border-box;
+}
+.ln-user-block {
+    height: 1rem;
+    margin-top:0.3rem;
+
+}
+.ln-user-block>input {
+    width: 100%;
+    
+}
+.ln-valid-block {
+    height: 1rem;
+    margin-top:0.3rem;
+}
+.ln-valid-block>input {
+    width: 3.25rem;
+}
+.ln-btn {
+    display: inline-block;
+    height: 1rem;
+    width: 2.4rem;
+    background-color: #298EEA;
+    line-height: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 0.3rem;
+}
+.ln-valid-block>A {
+    float: right;
+}
+A.ln-voice {
+    line-height: 1rem;
+    margin-bottom: 2px;
+    text-decoration: underline;
+}
+
+.ln-login-block {
+    margin-top: 0.4rem;
+}
+.ln-login-block>A {
+    width: 100%;       /*general*/
+}
+.ge-mask {
+    display: none;
+    position: fixed;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    opacity: 0.3;
+}
+.ge-box {
+    display: none;
+    width: 6.38rem;
+    height: 3.20rem;
+    position: fixed;
+    left: 50%;
+    top:50%;
+    margin-left: -3.19rem;
+    margin-top: -1.6rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    text-align: center;
+}
+.ge-box-content {
+    height: 2.24rem;
+    text-align: center;
+    padding: 0.55rem 0rem 0.64rem 0rem;
+    box-sizing: border-box;
+    border-bottom: 1px solid #dfdfdf;
+    color: #4c4c4c;
+}
+.ge-box-title {
+    font-size: 0.36rem;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+.ge-box-info {
+    font-size: 0.3rem;
+    overflow: hidden;
+}
+.ge-box-ok {
+    height: 0.96rem;
+    text-align: center;
+    line-height: 0.96rem;
+    color: #298eea;
+    font-size: 0.36rem;
+    display: inline-block;
+    margin: 0 auto;
+}
+.ge-box-confirm {
+    height: 0.96rem;
+    text-align: center;
+    line-height: 0.96rem;
+    color: #298eea;
+    font-size: 0.36rem;
+    margin-right: 1.2rem;
+}
+.ge-box-cancel {
+    height: 0.96rem;
+    text-align: center;
+    line-height: 0.96rem;
+    color: #298eea;
+    font-size: 0.36rem;
+}
+
+
+/*aqy*/
+.aqy-bd {
+    width: 7.5rem;
+    height: 17.18rem;
+    /*height: 12.67rem;*/
+    /*height: 14.55rem;*/
+    margin: 0 auto;
+    /*padding-bottom: 0.7rem;*/
+}
+.aqy-top {
+    width: 7.5rem;
+    height: 1.2rem;
+    /*background: url(images/top.png) center center;*/
+    background-size: 7.5rem 1.2rem;
+    background-color: #402e25;
+    display: none;
+}
+.aqy-banner {
+    width: 7.5rem;
+    /*height: 3.82rem;*/
+    height: 4.5rem;
+    background: url(images/banner.png) center center;
+    /*background-size: 7.5rem 3.82rem;*/
+    background-size: 7.5rem 4.5rem;
+    display: block;
+}
+.aqy-content {
+    width: 7.5rem;
+    height: 8.68rem;
+    background: url(images/content.png) center center;
+    background-size: 7.5rem 8.68rem;
+    position: relative;
+}
+.aqy-content>a {
+    display: inline-block;
+    position: absolute;
+}
+.aqy-a {
+    width: 2.88rem;
+    height: 1rem;
+    right: .5rem;
+    top:1.75rem;
+
+}
+.aqy-b {
+    width: 2.88rem;
+    height: 1rem;
+    right: .5rem;
+    top:3.2rem;
+}
+.aqy-c {
+    width: 2.88rem;
+    height: 1rem;
+    right: .5rem;
+    top:4.6rem;
+}
+.aqy-d {
+    width: 2.88rem;
+    height: 1rem;
+    right: .5rem;
+    top:6rem;
+    /*background-color: #ffffff;*/
+    opacity: 0.8;
+    font-size: .32rem;
+    text-align: center;
+    line-height: 1rem;
+    border-radius: 5px;
+}
+/*.aqy-d:after{*/
+    /*content: "已售罄,推荐年卡";*/
+/*}*/
+.aqy-clause {
+    width: 2.15rem;
+    height: .3rem;
+    left: 2.12rem;
+    top:8.18rem;
+    /*background-color: #402e24;*/
+}
+.aqy-e {
+    width: 5.35rem;
+    height: .65rem;
+    left: 1.1rem;
+    bottom:0.2rem;
+}
+.ln-clause-block {
+    height: 6.2rem;
+    box-sizing: border-box;
+    padding: 0.1rem 0rem;
+    font-size: 0.28rem;
+    margin-top: 0.5rem;
+    color: gray;
+}
+.ln-clause-block>p{
+    line-height: 0.5rem;
+}
+.clause-title {
+    font-size: 0.3rem;
+    font-weight: bold;
+}
+
+.aqy-copyright {
+    width: 100%;
+    text-align: center;
+}
+.em {
+    color:red
+}
+.em a {
+    text-decoration: underline;
+    color:red
+}
+.aqy-member {
+    height: 8.2rem;
+    width: 7.5rem;
+    background: url(images/member.png) center center;
+    background-size: 7.5rem 8.2rem;
+    position: relative;
+    top:-2px
+}
+.aqy-active {
+    display: inline-block;
+    position: absolute;
+    width: 2.15rem;
+    height: .3rem;
+    left: 4rem;
+    top:3.7rem;
+}
+
+/*my*/
+.my-header {
+    height: 1.06rem;
+    background: url(images/v-line.png) no-repeat 0.3rem center;
+    line-height: 1.06rem;
+    padding-left: 0.52rem;
+    padding-right: 0.52rem;
+    background-color: #F4F4F4;
+    background-size: 0.06rem 0.3rem;
+    font-size: 0.3rem;
+    color: #7A7A7A;
+}
+.my-code-list>li {
+    padding: 0.3rem 0.2rem;
+    border-bottom:1px solid #E5E5E5;
+}
+.my-code-list>li>* {
+    vertical-align: top;
+    display: inline-block;
+}
+.my-code-list>li>span:first-child {
+    width: 4.6rem;
+}
+.my-code-list>li>span:last-child {
+    width: 1.2rem;
+}
+.my-code-list>li>span:last-child>A {
+    width: 1.2rem;
+    height: 0.5rem;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    line-height: 0.5rem;
+    border-radius: 5px;
+    margin-bottom: 0.3rem;
+}
+.my-send-code {
+    color: #298EEA;
+    border:1px solid #298EEA;
+}
+/*.my-send-code:before{*/
+/*content: "下发短信";*/
+/*}*/
+.my-tel {
+    color: #298EEA;
+    border:1px solid #298EEA;
+}
+.my-tel:before{
+    content: "去激活";
+}
+.my-used {
+    color: #999999;
+    border:1px solid #999999;
+}
+.my-used:before{
+    content: "已使用";
+}
+.my-retrun {
+    color: #999999;
+    border:1px solid #999999;
+}
+.my-retrun:before{
+    content: "退款";
+}
+.my-retruned {
+    color: #e7e7e7;
+    border:1px solid #e7e7e7;
+}
+.my-retruned:before{
+    content: "已退款";
+}
+.my-close {
+    color: #e7e7e7;
+    border:1px solid #e7e7e7;
+}
+.my-close:before{
+    content: "已关闭";
+}
+.my-pay {
+    color: #ff6d46;
+    border:1px solid #ff6d46;
+}
+.my-pay:before{
+    content: "待付款";
+}
+
+.my-code-list>li>span>a {
+
+}
+.my-combo-name {
+    font-size: 0.3rem;
+}
+.my-combo-code {
+    font-size: 0.26rem;
+    line-height: 0.7rem;
+    /*padding-left: 0.3rem;*/
+}
+.my-combo-valid {
+    margin-top: 0.2rem;
+    font-size: 0.24rem;
+    color:#7F7F7F;
+    line-height: 0.2rem;
+    /*padding-left: 0.3rem;*/
+}
+.my-no-order {
+    width: 4.8rem;
+    height: 3.45rem;
+    position: absolute;
+    left: 50%;
+    top:50%;
+    margin-left: -2.4rem;
+    margin-top: -1.725rem;
+    background: url(images/no.png) no-repeat center center;
+    background-size: 4.8rem 3.45rem;
+}
+
+.pay-order-info {
+    font-size: .22rem;
+    text-align: center;
+    margin-top: .2rem;
+}
+
+.pay-order-img {
+    text-align: center;
+}
+.pay-order-img img {
+    width: 5.6rem;
+    height: 5.6rem;
+}
+.pay-order-finish{
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
